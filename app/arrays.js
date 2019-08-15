@@ -65,7 +65,7 @@ function elemsTimesLength(arr) {
 function arrayFlattener(arr) {
     let arrStr = arr.toString();
     console.log(arrStr)
-    arrStr = arrStr.split(",")
+    arrStr = arrStr.split(',')
     console.log(arrStr)
     return arrStr
 
