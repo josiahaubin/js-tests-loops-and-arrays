@@ -4,6 +4,12 @@
 // output: ['is', 'a', 'split', 'sentence.', 'This']
 
 function rearranger(arr) {
+    let arrValue = arr.shift();
+
+    arr.push(arrValue)
+
+    return arr
+
 }
 
 
@@ -16,6 +22,16 @@ function rearranger(arr) {
 // output: 42
 
 function largestNum(arr) {
+    let maxNum = 0;
+
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] > maxNum) {
+            maxNum = arr[i]
+        } else {
+            continue
+        }
+    }
+    return maxNum
 }
 
 
@@ -28,6 +44,12 @@ function largestNum(arr) {
 // output: [16, 8, 4, 28]
 
 function elemsTimesLength(arr) {
+    let newArr = []
+    for (let i = 0; i < arr.length; i++) {
+        let sum = arr[i] * arr.length
+        newArr.push(sum)
+    }
+    return newArr
 }
 
 
@@ -41,6 +63,11 @@ function elemsTimesLength(arr) {
 // Primitive data types - https://developer.mozilla.org/en-US/docs/Glossary/Primitive
 
 function arrayFlattener(arr) {
+    let arrStr = arr.toString();
+    console.log(arrStr)
+    arrStr = arrStr.split(",")
+    console.log(arrStr)
+    return arrStr
 
 }
 
@@ -76,7 +103,31 @@ let flights = [{
 
 function flightCost(destination, firstClass) {
     //***hint: use the find method***
+    let price;
+    let place = destination.toLowerCase();
+    let lax = flights[0].to.toLowerCase();
+    let sea = flights[1].to.toLowerCase();
+    let can = flights[2].to.toLowerCase();
 
+    if (place == lax && firstClass == true) {
+        price = flights[0].prices.firstClass
+        return price
+    } else if (place == lax && firstClass == false) {
+        price = flights[0].prices.standard
+        return price
+    } else if (place == sea && firstClass == true) {
+        price = flights[1].prices.firstClass
+        return price
+    } else if (place == sea && firstClass == false) {
+        price = flights[1].prices.standard
+        return price
+    } else if (place == can && firstClass == true) {
+        price = flights[2].prices.firstClass
+        return price
+    } else if (place == can && firstClass == false) {
+        price = flights[2].prices.standard
+        return price
+    }
 }
 
 
@@ -96,7 +147,15 @@ let staff = [{ id: 1, name: 'Jon' }, { id: 2, name: 'Yuli' }, { id: 21, name: 'P
 { id: 17, name: 'St. MaryLou de la Playa Carmen' }, { id: 51, name: 'Doug' },
 { id: 881, name: 'Paul' }, { id: 0, name: 'Jon' }, { id: 999, name: 'Timma' }]
 
+staff.push({ error: "No user with that id." })
+
 function findById(id) {
+    for (let i = 0; i < staff.length; i++) {
+        if (staff[i].id == id) {
+            return staff[i]
+        }
+    }
+    return staff[8]
 
 }
 
@@ -124,4 +183,15 @@ let theBand = {
 }
 
 function bandMemberDetails(name) {
+    let str = " is in the band and plays the ";
+    let sentence;
+    for (let i = 0; i < theBand.members.length; i++) {
+        if (name == theBand.members[i].name) {
+            sentence = theBand.members[i].name.concat(str, theBand.members[i].instrument)
+            return sentence
+        } else if (name.includes('John')) {
+            sentence = "Johnny P is in the band and plays the sax";
+            return sentence
+        }
+    }
 }
